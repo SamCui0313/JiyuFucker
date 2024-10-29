@@ -27,6 +27,19 @@
      <string>解禁全屏</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="FuckKeyboardLockButton">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>0</y>
+      <width>81</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>解除键盘锁</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

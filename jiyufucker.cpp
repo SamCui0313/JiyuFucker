@@ -14,6 +14,8 @@
 #include <QRect>
 #include "winuser.h"
 #include "CommCtrl.h"
+#include "fuckkeyboardlock.h"
+bool JiyuFucker::isFuckingKeyboardLock=false;
 JiyuFucker::JiyuFucker(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::JiyuFucker)
@@ -36,6 +38,11 @@ JiyuFucker::JiyuFucker(QWidget *parent)
     FuckLockScreenButton->setParent(this);
     FuckLockScreenButton->raise();
     connect(FuckLockScreenButton,&QPushButton::clicked,this,&JiyuFucker::FuckLockScreen);
+
+    QPushButton* FuckKeyboardLockButton = ui->FuckKeyboardLockButton;
+    FuckKeyboardLockButton->setParent(this);
+    FuckKeyboardLockButton->raise();
+    connect(FuckKeyboardLockButton,&QPushButton::clicked,this,&JiyuFucker::FuckKeyboardLockFunction);
 }
 
 JiyuFucker::~JiyuFucker()
@@ -57,4 +64,15 @@ void JiyuFucker::FuckLockScreen() {
 }
 void JiyuFucker::MakeWindowTop(){
     SetWindowPos((HWND)this->winId(),HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_DRAWFRAME | SWP_NOSIZE);
+}
+void JiyuFucker::FuckKeyboardLockFunction(){
+    FuckKeyboardLock* keythread = new FuckKeyboardLock();
+    keythread->start();
+    if(this->isFuckingKeyboardLock){
+        isFuckingKeyboardLock=false;
+        ui->FuckKeyboardLockButton->setText("解除键盘锁");
+    } else {
+        isFuckingKeyboardLock=true;
+        ui->FuckKeyboardLockButton->setText("打开键盘锁");
+    }
 }
